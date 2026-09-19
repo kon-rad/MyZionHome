@@ -1,4 +1,4 @@
-# NatureHouse
+# MyZionHome
 
 The digital home for **"Secluded Retreat with Workspaces & Nature Trails"** — an entire home on 6 private acres in Zion, Illinois. A cinematic, editorial site with a drone-video hero, an interactive gallery, an interactive location map, a local guidebook, and an AI concierge that answers guest questions from a markdown knowledge base via **Together AI**.
 

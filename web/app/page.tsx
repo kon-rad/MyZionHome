@@ -2,6 +2,7 @@ import Hero from "@/components/Hero";
 import Highlights from "@/components/Highlights";
 import About from "@/components/About";
 import GalleryPreview from "@/components/GalleryPreview";
+import DroneVideos from "@/components/DroneVideos";
 import Amenities from "@/components/Amenities";
 import LocationMap from "@/components/LocationMap";
 import GuidebookPreview from "@/components/GuidebookPreview";
@@ -17,6 +18,7 @@ export default function Home() {
       <Highlights />
       <About />
       <GalleryPreview />
+      <DroneVideos />
       <Amenities />
       <LocationMap />
       <GuidebookPreview guides={guides} />

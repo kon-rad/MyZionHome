@@ -7,7 +7,7 @@ import { ArrowIcon } from "@/components/Icons";
 
 export const metadata: Metadata = {
   title: "Gallery",
-  description: "Photos and drone video of the NatureHouse retreat in Zion, Illinois.",
+  description: "Photos and drone video of the MyZionHome retreat in Zion, Illinois.",
 };
 
 export default function GalleryPage() {

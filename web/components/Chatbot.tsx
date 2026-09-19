@@ -6,7 +6,7 @@ import { ChatIcon, CloseIcon, SendIcon } from "./Icons";
 type Msg = { role: "user" | "assistant"; content: string };
 
 const GREETING =
-  "Hi, I'm the NatureHouse concierge. Ask me anything about the house, check-in, or the area.";
+  "Hi, I'm the MyZionHome concierge. Ask me anything about the house, check-in, or the area.";
 
 const CHIPS = [
   "How do I check in?",
@@ -129,7 +129,7 @@ export default function Chatbot() {
               </svg>
             </span>
             <div>
-              <p className="font-display text-base leading-none">NatureHouse Concierge</p>
+              <p className="font-display text-base leading-none">MyZionHome Concierge</p>
               <p className="mt-1 font-mono text-[0.58rem] uppercase tracking-[0.16em] text-cream/60">
                 Powered by Together AI
               </p>

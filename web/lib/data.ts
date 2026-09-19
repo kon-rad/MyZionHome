@@ -1,7 +1,7 @@
 // Structured listing data. Safe to import from client or server components.
 
 export const SITE = {
-  name: "NatureHouse",
+  name: "MyZionHome",
   tagline: "Where style meets serenity.",
   pitch:
     "A refined escape on 6 private acres in Zion, Illinois. Fast WiFi, forest trails, and quiet spots for reflection.",
@@ -13,6 +13,10 @@ export const SITE = {
   beds: 3,
   baths: 2,
   airbnbUrl: "https://www.airbnb.com/rooms/52111402",
+  // Contact. Fill in both to show them in the header and footer (hidden while empty).
+  // whatsapp: digits only with country code, e.g. "15551234567". email: plain address.
+  whatsapp: "17085391771" as string,
+  email: "konradmgnat@gmail.com" as string,
   repoUrl: "https://github.com/kon-rad/MyZionHome",
   // Approximate map center (exact location provided after booking).
   approxLat: 42.47,
@@ -206,3 +210,14 @@ export const HOUSE_RULES = [
   "6 guests maximum",
   "No parties",
 ] as const;
+
+// Drone films on YouTube (@GlobalDroneClub). `id` is the YouTube video id.
+export const DRONE_VIDEOS = [
+  { id: "pvdCB7hdzG0", title: "Zion Illinois 4K Drone", note: "4K flight over the property" },
+  { id: "kqirj6rzvZg", title: "Zion Illinois Drone Footage", note: "March 24, 2023" },
+  { id: "rtVmuGFskjA", title: "FPV Zion", note: "FPV flight, May 5, 2022" },
+  { id: "j5GZStj8m_s", title: "Zion, Illinois Drone Film", note: "November 22, 2023" },
+  { id: "FXAWvZYstiY", title: "Zion Drone Footage: Masters of the Far East", note: "Drone footage set to a reading" },
+] as const;
+
+export const whatsappUrl = (n: string) => `https://wa.me/${n.replace(/\D/g, "")}`;

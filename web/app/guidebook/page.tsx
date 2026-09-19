@@ -8,7 +8,7 @@ import { ArrowIcon } from "@/components/Icons";
 export const metadata: Metadata = {
   title: "Guidebook",
   description:
-    "Local guides for the NatureHouse retreat: getting here, Navy graduations, beaches, family day trips, food, and remote work.",
+    "Local guides for the MyZionHome retreat: getting here, Navy graduations, beaches, family day trips, food, and remote work.",
 };
 
 export default function GuidebookPage() {

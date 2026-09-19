@@ -2,12 +2,14 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { SITE } from "@/lib/data";
+import { SITE, whatsappUrl } from "@/lib/data";
 
 const LINKS = [
   { href: "/#space", label: "The Space" },
   { href: "/gallery", label: "Gallery" },
+  { href: "/#air", label: "From the Air" },
   { href: "/#location", label: "Location" },
+  { href: "/availability", label: "Availability" },
   { href: "/guidebook", label: "Guidebook" },
   { href: "/library", label: "Library" },
   { href: "/#reviews", label: "Reviews" },
@@ -55,6 +57,17 @@ export default function Nav() {
           ))}
         </div>
 
+        <div className="flex items-center gap-3">
+        {SITE.whatsapp && (
+          <a
+            href={whatsappUrl(SITE.whatsapp)}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden font-mono text-[0.66rem] uppercase tracking-[0.14em] text-cream/80 transition-colors hover:text-amber sm:inline"
+          >
+            WhatsApp
+          </a>
+        )}
         <a
           href={SITE.airbnbUrl}
           target="_blank"
@@ -63,6 +76,7 @@ export default function Nav() {
         >
           Book
         </a>
+        </div>
       </nav>
     </header>
   );

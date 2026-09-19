@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { SITE, HOST, HOUSE_RULES } from "@/lib/data";
+import { SITE, HOST, HOUSE_RULES, whatsappUrl } from "@/lib/data";
 import Reveal from "./Reveal";
 import { ArrowIcon } from "./Icons";
 
@@ -28,17 +28,6 @@ export default function Footer() {
                 Explore the gallery
               </Link>
             </div>
-            <p className="mt-8 font-mono text-[0.68rem] uppercase tracking-[0.18em] text-cream/55">
-              This site is open source ·{" "}
-              <a
-                href={SITE.repoUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-amber-bright underline-offset-4 hover:underline"
-              >
-                Fork it on GitHub
-              </a>
-            </p>
           </Reveal>
         </div>
       </div>
@@ -62,6 +51,9 @@ export default function Footer() {
           <ul className="mt-4 space-y-2 text-sm text-cream/75">
             <li><Link href="/#space" className="hover:text-amber-bright">The Space</Link></li>
             <li><Link href="/gallery" className="hover:text-amber-bright">Gallery</Link></li>
+            <li><Link href="/availability" className="hover:text-amber-bright">Availability</Link></li>
+            <li><Link href="/#air" className="hover:text-amber-bright">Zion Home from the Air</Link></li>
+            <li><Link href="/library" className="hover:text-amber-bright">Library</Link></li>
             <li><Link href="/#location" className="hover:text-amber-bright">Location</Link></li>
             <li><Link href="/guidebook" className="hover:text-amber-bright">Guidebook</Link></li>
             <li><Link href="/#reviews" className="hover:text-amber-bright">Reviews</Link></li>
@@ -88,6 +80,24 @@ export default function Footer() {
             {HOST.years} years hosting · responds {HOST.responseTime}
           </p>
           <p className="mt-3 text-sm text-cream/60">{HOST.bio}</p>
+          {(SITE.whatsapp || SITE.email) && (
+            <ul className="mt-4 space-y-2 text-sm text-cream/75">
+              {SITE.whatsapp && (
+                <li>
+                  <a href={whatsappUrl(SITE.whatsapp)} target="_blank" rel="noopener noreferrer" className="hover:text-amber-bright">
+                    WhatsApp: +{SITE.whatsapp.replace(/\D/g, "")}
+                  </a>
+                </li>
+              )}
+              {SITE.email && (
+                <li>
+                  <a href={`mailto:${SITE.email}`} className="hover:text-amber-bright">
+                    {SITE.email}
+                  </a>
+                </li>
+              )}
+            </ul>
+          )}
         </div>
       </div>
 
@@ -97,7 +107,7 @@ export default function Footer() {
         </p>
         <p className="font-mono text-[0.6rem] uppercase tracking-[0.16em] text-cream/40">
           <a href={SITE.repoUrl} target="_blank" rel="noopener noreferrer" className="hover:text-amber-bright">
-            Open source on GitHub
+            See the source code on GitHub
           </a>
           {" · "}Ask the concierge, bottom right ↘
         </p>

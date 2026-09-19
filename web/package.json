@@ -2,7 +2,7 @@
   "name": "naturehouse",
   "version": "0.1.0",
   "private": true,
-  "description": "NatureHouse — the digital home for a secluded 6-acre retreat in Zion, Illinois. Drone-video hero, editorial gallery, local guidebook, and an AI concierge powered by Together AI.",
+  "description": "MyZionHome — the digital home for a secluded 6-acre retreat in Zion, Illinois. Drone-video hero, editorial gallery, local guidebook, and an AI concierge powered by Together AI.",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

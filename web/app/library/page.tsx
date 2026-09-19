@@ -7,7 +7,7 @@ import { LIBRARY, formatYear } from "@/lib/library";
 
 export const metadata: Metadata = {
   title: "Library",
-  description: "The NatureHouse guest library: books on code, AI, ideas, and the classics.",
+  description: "The MyZionHome guest library: books on code, AI, ideas, and the classics.",
 };
 
 export default function LibraryPage() {

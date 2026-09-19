@@ -26,7 +26,15 @@ export default function Hero() {
 
       <div className="edge relative flex h-full flex-col justify-end pb-20 sm:pb-24">
         <p className="eyebrow text-amber-bright animate-fade-up" style={{ animationDelay: "0.1s" }}>
-          Zion · Illinois · 6 Private Acres
+          <a
+            href={SITE.airbnbUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline-offset-4 hover:underline"
+          >
+            {SITE.name}
+          </a>{" "}
+          · Zion, Illinois · 6 Private Acres
         </p>
 
         <h1 className="mt-5 max-w-3xl font-display text-5xl font-light leading-[0.95] text-cream sm:text-7xl lg:text-8xl">
