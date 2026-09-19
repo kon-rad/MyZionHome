@@ -1,0 +1,42 @@
+# === NatureHouse (repo root) ===
+# This ignore file makes it safe to `git init` at the NatureHouse/ root and
+# publish the whole project as an open-source repo.
+
+# Dependencies
+**/node_modules/
+
+# Next.js build output
+**/.next/
+**/out/
+**/build/
+*.tsbuildinfo
+web/next-env.d.ts
+
+# Secrets — NEVER commit these. Only .env.example is tracked.
+.env
+.env.local
+.env*.local
+**/.env
+**/.env.local
+**/.env*.local
+
+# Real media (large binaries). Commit the generated SVG placeholders only.
+# Uncomment if you keep photos/video out of git:
+# web/public/media/*.mp4
+# web/public/media/*.jpg
+# web/public/media/*.png
+
+# Logs & OS cruft
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.DS_Store
+
+# Editor
+.idea/
+.vscode/
+*.swp
+
+# Deploy
+.vercel
