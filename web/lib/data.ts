@@ -13,7 +13,7 @@ export const SITE = {
   beds: 3,
   baths: 2,
   airbnbUrl: "https://www.airbnb.com/rooms/52111402",
-  repoUrl: "https://github.com/kon-rad/naturehouse",
+  repoUrl: "https://github.com/kon-rad/MyZionHome",
   // Approximate map center (exact location provided after booking).
   approxLat: 42.47,
   approxLng: -87.9,
