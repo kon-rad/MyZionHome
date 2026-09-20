@@ -10,6 +10,7 @@ const LINKS = [
   { href: "/#air", label: "From the Air" },
   { href: "/#location", label: "Location" },
   { href: "/availability", label: "Availability" },
+  { href: "/weather", label: "Weather" },
   { href: "/guidebook", label: "Guidebook" },
   { href: "/library", label: "Library" },
   { href: "/#reviews", label: "Reviews" },

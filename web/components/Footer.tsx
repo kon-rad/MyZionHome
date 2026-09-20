@@ -52,6 +52,7 @@ export default function Footer() {
             <li><Link href="/#space" className="hover:text-amber-bright">The Space</Link></li>
             <li><Link href="/gallery" className="hover:text-amber-bright">Gallery</Link></li>
             <li><Link href="/availability" className="hover:text-amber-bright">Availability</Link></li>
+            <li><Link href="/weather" className="hover:text-amber-bright">Weather</Link></li>
             <li><Link href="/#air" className="hover:text-amber-bright">Zion Home from the Air</Link></li>
             <li><Link href="/library" className="hover:text-amber-bright">Library</Link></li>
             <li><Link href="/#location" className="hover:text-amber-bright">Location</Link></li>
