@@ -18,6 +18,7 @@ export const SITE = {
   whatsapp: "17085391771" as string,
   email: "konradmgnat@gmail.com" as string,
   repoUrl: "https://github.com/kon-rad/MyZionHome",
+  youtubeUrl: "https://www.youtube.com/@zionnaturehome",
   // Approximate map center (exact location provided after booking).
   approxLat: 42.47,
   approxLng: -87.9,

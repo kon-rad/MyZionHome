@@ -4,6 +4,7 @@ import "./globals.css";
 import { SITE } from "@/lib/data";
 import Nav from "@/components/Nav";
 import Chatbot from "@/components/Chatbot";
+import AuthProvider from "@/components/AuthProvider";
 
 const fraunces = Fraunces({
   subsets: ["latin"],
@@ -48,9 +49,11 @@ export default function RootLayout({
       className={`${fraunces.variable} ${instrument.variable} ${jetbrains.variable}`}
     >
       <body className="grain">
-        <Nav />
-        {children}
-        <Chatbot />
+        <AuthProvider>
+          <Nav />
+          {children}
+          <Chatbot />
+        </AuthProvider>
       </body>
     </html>
   );

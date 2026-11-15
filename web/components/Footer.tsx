@@ -57,6 +57,11 @@ export default function Footer() {
             <li><Link href="/library" className="hover:text-amber-bright">Library</Link></li>
             <li><Link href="/#location" className="hover:text-amber-bright">Location</Link></li>
             <li><Link href="/guidebook" className="hover:text-amber-bright">Guidebook</Link></li>
+            <li>
+              <a href={SITE.youtubeUrl} target="_blank" rel="noopener noreferrer" className="hover:text-amber-bright">
+                YouTube
+              </a>
+            </li>
             <li><Link href="/#reviews" className="hover:text-amber-bright">Reviews</Link></li>
           </ul>
         </div>

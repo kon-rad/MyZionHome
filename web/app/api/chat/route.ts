@@ -1,4 +1,6 @@
 import { buildSystemPrompt } from "@/lib/knowledge";
+import { verifyBearer } from "@/lib/firebase";
+import { logExchange, SESSION_ID } from "@/lib/chat-log";
 
 export const runtime = "nodejs";
 
@@ -17,9 +19,11 @@ export async function POST(req: Request) {
   }
 
   let messages: ChatMessage[] = [];
+  let sessionId = "";
   try {
     const body = await req.json();
     messages = Array.isArray(body.messages) ? body.messages : [];
+    sessionId = typeof body.sessionId === "string" && SESSION_ID.test(body.sessionId) ? body.sessionId : "";
   } catch {
     return new Response("Bad request", { status: 400 });
   }
@@ -27,10 +31,15 @@ export async function POST(req: Request) {
   // Keep only the last ~10 turns and strip any client-sent system messages.
   const history = messages
     .filter((m) => m.role === "user" || m.role === "assistant")
-    .slice(-10);
+    .slice(-10)
+    .map((m) => ({ role: m.role, content: String(m.content ?? "").slice(0, 2000) }));
+  const lastUser = [...history].reverse().find((m) => m.role === "user")?.content ?? "";
+  const model = process.env.TOGETHER_MODEL || DEFAULT_MODEL;
+  // Optional: attach the signed-in user (if any) to the log entry.
+  const who = sessionId ? await verifyBearer(req) : null;
 
   const payload = {
-    model: process.env.TOGETHER_MODEL || DEFAULT_MODEL,
+    model,
     stream: true,
     temperature: 0.4,
     max_tokens: 700,
@@ -67,6 +76,19 @@ export async function POST(req: Request) {
     async start(controller) {
       const reader = upstream.body!.getReader();
       let buffer = "";
+      let reply = "";
+      const log = (incomplete: boolean) =>
+        sessionId && lastUser
+          ? logExchange({
+              sessionId,
+              uid: who?.uid ?? null,
+              email: who?.email ?? null,
+              user: lastUser,
+              assistant: reply,
+              model,
+              incomplete,
+            })
+          : Promise.resolve();
       try {
         while (true) {
           const { done, value } = await reader.read();
@@ -79,20 +101,26 @@ export async function POST(req: Request) {
             if (!trimmed.startsWith("data:")) continue;
             const data = trimmed.slice(5).trim();
             if (data === "[DONE]") {
+              await log(false);
               controller.close();
               return;
             }
             try {
               const json = JSON.parse(data);
               const token = json.choices?.[0]?.delta?.content;
-              if (token) controller.enqueue(encoder.encode(token));
+              if (token) {
+                reply += token;
+                controller.enqueue(encoder.encode(token));
+              }
             } catch {
               // ignore keep-alive / partial lines
             }
           }
         }
+        await log(false);
         controller.close();
       } catch (err) {
+        await log(true);
         controller.error(err);
       }
     },

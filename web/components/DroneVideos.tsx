@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { DRONE_VIDEOS } from "@/lib/data";
+import { DRONE_VIDEOS, SITE } from "@/lib/data";
 import Reveal from "./Reveal";
 
 function VideoCard({ v }: { v: (typeof DRONE_VIDEOS)[number] }) {
@@ -58,6 +58,14 @@ export default function DroneVideos() {
             Six acres, the tree line, and the fields around them, filmed by drone across
             the seasons.
           </p>
+          <a
+            href={SITE.youtubeUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-4 inline-block font-mono text-xs uppercase tracking-[0.18em] text-clay underline hover:text-amber"
+          >
+            YouTube: @zionnaturehome
+          </a>
         </Reveal>
 
         <Reveal className="mt-12">

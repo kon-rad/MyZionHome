@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { SITE, whatsappUrl } from "@/lib/data";
+import AuthButton from "./AuthButton";
 
 const LINKS = [
   { href: "/#space", label: "The Space" },
@@ -59,6 +60,7 @@ export default function Nav() {
         </div>
 
         <div className="flex items-center gap-3">
+        <AuthButton />
         {SITE.whatsapp && (
           <a
             href={whatsappUrl(SITE.whatsapp)}

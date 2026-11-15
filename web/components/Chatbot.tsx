@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { ChatIcon, CloseIcon, SendIcon } from "./Icons";
+import { useAuth } from "./AuthProvider";
 
 type Msg = { role: "user" | "assistant"; content: string };
 
@@ -15,7 +16,22 @@ const CHIPS = [
   "Where's the nearest grocery?",
 ];
 
+// One id per browser tab session, used to group a conversation's messages in the log.
+function sessionId(): string {
+  try {
+    let id = sessionStorage.getItem("mzh-chat");
+    if (!id) {
+      id = crypto.randomUUID();
+      sessionStorage.setItem("mzh-chat", id);
+    }
+    return id;
+  } catch {
+    return crypto.randomUUID();
+  }
+}
+
 export default function Chatbot() {
+  const { getToken } = useAuth();
   const [open, setOpen] = useState(false);
   const [input, setInput] = useState("");
   const [busy, setBusy] = useState(false);
@@ -46,10 +62,15 @@ export default function Chatbot() {
     setBusy(true);
 
     try {
+      const token = await getToken().catch(() => null);
       const res = await fetch("/api/chat", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          ...(token ? { Authorization: `Bearer ${token}` } : {}),
+        },
         body: JSON.stringify({
+          sessionId: sessionId(),
           messages: nextHistory.map((m) => ({
             role: m.role,
             content: m.content,
@@ -206,6 +227,9 @@ export default function Chatbot() {
             <SendIcon className="h-4 w-4" />
           </button>
         </form>
+        <p className="bg-paper px-4 pb-3 text-center text-[0.65rem] text-moss/80">
+          Chats are saved to help improve the concierge.
+        </p>
       </div>
     </>
   );
